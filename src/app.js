@@ -3,6 +3,7 @@ const cors = require("cors");
 const authRouter = require("./routes/auth.routes");
 const userRouter = require("./routes/user.routes");
 const recordRouter = require("./routes/record.routes");
+const dashboardRouter = require("./routes/dashboard.routes");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
@@ -42,6 +43,7 @@ app.use(cors({
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/records", recordRouter);
+app.use("/api/v1/dashboard", dashboardRouter);
 
 // 404 handler
 app.use((req, res, next) => {
