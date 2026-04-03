@@ -68,11 +68,25 @@ npm start
 
 ## API Documentation
 
+## Base URL
+
+All API requests are made using the base URL:
+
+http://localhost:5000/api/v1
+
+Each endpoint should be appended to this base URL.
+
+Example:
+http://localhost:5000/api/v1/auth/register
+
 ### Authentication APIs
 
 #### Register Account
-Creates a new system entity granting access.
 - **Method**: POST
+- **URL**: `/auth/register`
+
+**Usage**:
+Send a POST request to this endpoint with required user details in the request body to register a new user.
 - **Body**: 
   ```json
   {
@@ -85,8 +99,11 @@ Creates a new system entity granting access.
 - **Response**: `{ "success": true, "message": "User registered successfully", "data": { "user": {...}, "token": "..." } }`
 
 #### Account Login
-Authenticates utilizing system credentials returning a signed token flow.
 - **Method**: POST
+- **URL**: `/auth/login`
+
+**Usage**:
+Send a POST request to this endpoint with email and password to receive a JWT authentication token.
 - **Body**:
   ```json
   {
@@ -99,13 +116,19 @@ Authenticates utilizing system credentials returning a signed token flow.
 ### User Management APIs
 
 #### Retrieve Users
-Fetches all active user accounts resolving natively downward.
 - **Method**: GET
+- **URL**: `/users`
+
+**Usage**:
+Send a GET request to this endpoint to retrieve a list of all active user accounts (Admin only).
 - **Response**: `{ "success": true, "message": "Users retrieved successfully", "data": { "users": [...] } }`
 
 #### Update User
-Modifies target user privileges or activity metrics systematically mapped against role.
 - **Method**: PATCH
+- **URL**: `/users/:id`
+
+**Usage**:
+Send a PATCH request to this endpoint supplying user role or status updates within the body (Admin only).
 - **Body**:
   ```json
   {
@@ -118,8 +141,11 @@ Modifies target user privileges or activity metrics systematically mapped agains
 ### Financial Record APIs
 
 #### Create Record
-Initializes a new financial statement bound deeply to the authorized entity.
 - **Method**: POST
+- **URL**: `/records`
+
+**Usage**:
+Send a POST request to this endpoint with financial record details dynamically mapped to your account.
 - **Body**:
   ```json
   {
@@ -133,14 +159,20 @@ Initializes a new financial statement bound deeply to the authorized entity.
 - **Response**: `{ "success": true, "message": "Record created successfully", "data": { "record": {...} } }`
 
 #### Retrieve Records
-Fetches financial records mapping timeline limitations while applying standard pagination controls.
 - **Method**: GET
+- **URL**: `/records`
+
+**Usage**:
+Send a GET request here mapping query parameters safely resolving financial records dynamically.
 - **Query Parameters**: `page`, `limit`, `type`, `category`, `startDate`, `endDate`
 - **Response**: `{ "success": true, "message": "Records retrieved successfully", "data": { "records": [...], "pagination": {...} } }`
 
 #### Update Record
-Safely rewrites inner object fields enforcing Joi structure parameters conditionally.
 - **Method**: PATCH
+- **URL**: `/records/:id`
+
+**Usage**:
+Send a PATCH request applying dynamic updates upon an active record modifying notes or amount metrics.
 - **Body**:
   ```json
   {
@@ -151,30 +183,45 @@ Safely rewrites inner object fields enforcing Joi structure parameters condition
 - **Response**: `{ "success": true, "message": "Record updated successfully", "data": { "record": {...} } }`
 
 #### Soft Delete Record
-Marks the target dimension utilizing internal state triggers functionally omitting trace results automatically later cleanly.
 - **Method**: DELETE
+- **URL**: `/records/:id`
+
+**Usage**:
+Send a DELETE request gracefully disabling a target record dynamically retaining its historical impact.
 - **Response**: `{ "success": true, "message": "Record deleted successfully", "data": {} }`
 
 ### Dashboard Aggregate APIs
 
 #### Aggregated Summary
-Calculates aggregate total income alongside general total expense yielding static balances safely.
 - **Method**: GET
+- **URL**: `/dashboard/summary`
+
+**Usage**:
+Send a GET request generating a calculated total resolving income versus expenses cleanly.
 - **Response**: `{ "success": true, "message": "Summary retrieved successfully", "data": { "totalIncome": 1500, "totalExpense": 0, "netBalance": 1500 } }`
 
 #### Category Distribution
-Parses internal numerical flows resolving entirely isolated sums mapping dynamically against established categorical metrics cleanly.
 - **Method**: GET
+- **URL**: `/dashboard/category`
+
+**Usage**:
+Send a GET request mapping numeric flow balances distributed systematically over individual categories.
 - **Response**: `{ "success": true, "message": "Category distribution retrieved successfully", "data": { "categories": [...] } }`
 
 #### Financial Trends
-Quantifies isolated transactional blocks directly categorized securely per-month mapping explicit differences directly internally.
 - **Method**: GET
+- **URL**: `/dashboard/trends`
+
+**Usage**:
+Send a GET request evaluating expense flows charted dynamically per successive month.
 - **Response**: `{ "success": true, "message": "Trends retrieved successfully", "data": { "trends": { "2026-04": {...} } } }`
 
 #### Recent Operations
-Gauges timeline components parsing heavily descending timeline traces yielding direct limits.
 - **Method**: GET
+- **URL**: `/dashboard/recent`
+
+**Usage**:
+Send a GET request rapidly extracting five recent ledger modifications strictly sorted natively.
 - **Response**: `{ "success": true, "message": "Recent transactions retrieved successfully", "data": { "recent": [...] } }`
 
 ## Authentication Guide
