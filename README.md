@@ -66,6 +66,12 @@ npm run dev
 npm start
 ```
 
+## Interactive API Documentation
+
+For a complete, interactive overview of all endpoints with ready-to-test request templates, please refer to our official Postman collection:
+
+👉 [View Postman API Documentation](https://documenter.getpostman.com/view/37563529/2sBXionVw4)
+
 ## API Documentation
 
 ## Base URL
